@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Header/Footer-->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JOPIANOZA - Contact</title>
+  <style>
+    header {
+      background-color: #F7879A;
+      color: white;
+      font-weight: bold;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 20px;
+    }
+    h1 {
+      color: white;
+      font-size: 2.5rem;
+    }
+    nav a {
+      color: white;
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 98.5%;
+      height: 60px;
+      background-color: #F89880;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.2rem;
+      font-style: italic;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+
+<header>
+  <div>
+    <h1>JOPIANOZA: Bringing You Closer to Music</h1>
+    <p style="font-style: italic; font-size: 1em;">Explore, learn, and connect with music in your own way</p>
+  </div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="main-lessons.html">Lessons</a>
+    <a href="main-contact.html">Contact</a>
+    <a href="#" onclick="toggleLogin()">Login</a>
+  </nav>
+</header>
+
+<footer>
+  <p>&copy; 2025 JOPIANOZA. Wholly Designed by J.T.J.L. All Rights Reserved.</p>
+</footer>
+
+
+<!-- Body Text (separated because of link colour) -->
+<head>
+  <style>
+    body {
+      margin: 0;
+      font-family: Ink Free, Ink Free;
+      background: white;
+      color: #F7879A;
+      font-size: 1.5rem;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+    h2 {
+      color: #F89880;
+    }
+    a:link,
+    a:visited {
+      color: inherit;     /* Keeps the same color as surrounding text */
+      text-decoration: none;     /* Removes the underline */
+    }
+    a:hover {
+      text-decoration: underline;     /* Optional: underline on hover */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <section id="contact">
+      <h2><u>Contact</h2></u>
+      <p><strong>Email:</strong> enquiry.jopianoza@gmail.com<br>
+         <strong>Telegram:</strong> <a href="https://t.me/JoTan97" target="_blank">Get in touch!</a><br>
+         <strong>Location:</strong> Home Studio @ Balestier Area<br>
+         <strong>Nearest Station:</strong> Toa Payoh MRT (Bus 139), Novena MRT (Bus 21/131/124),<br>
+          Farrer Park MRT (Bus 125/139), Boon Keng MRT (Walk 15 mins)</p>
+
+      <P>Feel free to reach out with any enquiries about lesson fees, scheduling,<br>
+        testimonials, or other information you may need.</P>
+    </section>
+  </div>
+</body>
+
+
+<!-- Login Box -->
+<head>
+  <style>
+     #login-form {
+      display: none;
+      position: fixed;     /* Keeps it fixed on screen */
+      top: 30%;
+      left: 85%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 1.5rem;
+      border-radius: 5px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      width: 400px;
+      z-index: 1000;
+    }
+    #login-form h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
+    }
+    #login-form input {
+      width: 95%;
+      padding: 10px;
+      margin: 0.5rem 0;
+      border: 1px solid #F7879A;
+      border-radius: 5px;
+    }
+    #login-form button {
+      width: 100%;
+      padding: 10px;
+      margin: 0.5rem 0;
+      font-family: Ink Free, Ink Free;
+      background-color: #F7879A;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    #login-form button:hover {
+      background-color: #F89880;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="login-form">
+    <h2>Login</h2>
+    <form action="/login" method="POST">
+      <input type="Student ID" name="Student ID" placeholder="Student ID" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <script>
+    function toggleLogin() {
+      const form = document.getElementById("login-form");
+      form.style.display = form.style.display === "block" ? "none" : "block";
+    }
+  </script>
+</body>
+
+
+<!-- Movable Google Map -->
+<head>
+  <style>
+    iframe {
+      position: fixed;
+      top: 275px;
+      right: 200px;     /* 200px from the right */
+      border: 0;
+      width: 300px;
+      height: 250px;
+      border-radius: 25% / 25%;     /* Curved square shape */
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      background-color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19034.739858249588!2d103.84406892535618!3d1.331749026503016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da19d79b161c07%3A0x9c8f91b208b0c2fb!2sWhampoa!5e0!3m2!1sen!2ssg!4v1747480890528!5m2!1sen!2ssg"
+    style="border:0;"
+    allowfullscreen = ""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</body>
+
+</html>

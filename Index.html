@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Header/Footer/Body Text-->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JOPIANOZA - Home</title>
+  <style>
+    header {
+      background-color: #F7879A;
+      color: white;
+      font-weight: bold;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 20px;
+    }
+    h1 {
+      color: white;
+      font-size: 2.5rem;
+    }
+    nav a {
+      color: white;
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 98.5%;
+      height: 60px;
+      background-color: #F89880;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.2rem;
+      font-style: italic;
+      border-radius: 20px;
+    }
+    body {
+      margin: 0;
+      font-family: Ink Free, Ink Free;
+      background: white;
+      color: #F7879A;
+      font-size: 1.5rem;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+    h2 {
+      color: #F89880;
+    }
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 2s ease-in forwards;
+    }
+    @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }}
+    .highlight {
+      background-color: #F7879A;
+      padding: 0.2em;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<header>
+  <div>
+    <h1>JOPIANOZA: Bringing You Closer to Music</h1>
+    <p style="font-style: italic; font-size: 1em;">Explore, learn, and connect with music in your own way</p>
+  </div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="main-lessons.html">Lessons</a>
+    <a href="main-contact.html">Contact</a>
+    <a href="#" onclick="toggleLogin()">Login</a>
+  </nav>
+</header>
+
+<footer>
+  <p>&copy; 2025 JOPIANOZA. Wholly Designed by J.T.J.L. All Rights Reserved.</p>
+</footer>
+
+<body>
+  <div class="container">
+    <section id="about">
+      <h2><u>About</h2></u>
+      <p><strong>Welcome to JOPIANOZA!<br></strong>
+         My name is Jo and I am a dedicated part-time piano educator based in Singapore.<br>
+         With more than 5 years of teaching experience, I believe that music is a powerful instrument that inspires confidence, creativity, and joy.<br>
+         My teaching style is structured and engaging to create a fun yet focused environment where students can grow not only as musicians but as confident individuals.<br>
+         This website is solely dedicated to my students.</p>
+
+      <p class="fade-in"><span style="color: white;"><span class="highlight"><strong>For current private students, simply log in with your student ID to access personalized resources curated and created just for you.</p></span></span></strong>
+    </section>
+</body>
+
+
+<!-- Login Box -->
+<head>
+  <style>
+     #login-form {
+      display: none;
+      position: fixed;     /* Keeps it fixed on screen */
+      top: 30%;
+      left: 85%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 1.5rem;
+      border-radius: 5px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      width: 400px;
+      z-index: 1000;
+    }
+    #login-form h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
+    }
+    #login-form input {
+      width: 95%;
+      padding: 10px;
+      margin: 0.5rem 0;
+      border: 1px solid #F7879A;
+      border-radius: 5px;
+    }
+    #login-form button {
+      width: 100%;
+      padding: 10px;
+      margin: 0.5rem 0;
+      font-family: Ink Free, Ink Free;
+      background-color: #F7879A;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    #login-form button:hover {
+      background-color: #F89880;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="login-form">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <input type="text" id="studentId" name="studentId" placeholder="Student ID" required />
+      <input type="password" id="password" name="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <script>
+    function toggleLogin() {
+      const form = document.getElementById("login-form");
+      form.style.display = form.style.display === "block" ? "none" : "block";
+    }
+
+    // Handle login form submission
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const studentId = document.getElementById("studentId").value.trim();
+      const password = document.getElementById("password").value;
+
+      // Fetch user data ONLY when login is attempted
+      fetch("logindatabase.json")
+        .then(res => {
+          if (!res.ok) throw new Error("Failed to load user database.");
+          return res.json();
+        })
+        .then(users => {
+          const match = users.find(
+            (u) => u.studentId === studentId && u.password === password
+          );
+
+          if (match) {
+            localStorage.setItem("loggedInUser", JSON.stringify(match));
+            window.location.href = "dashboard.html";
+          } else {
+            alert("Invalid Student ID or password.");
+          }
+        })
+        .catch(err => {
+          alert("Error loading user data.");
+          console.error(err);
+        });
+    });
+  </script>
+</body>
+
+
+<!-- Photograph -->
+<head>
+  <style>
+    .image {
+      position: absolute;
+      top: 250px;     /* Distance from the top */
+      left: 65px;     /* Distance from the left */
+      width: 250px;     /* Image width */
+      height: 250px;     /* Image height */
+      object-fit: cover;     /* Crop to fill the oval shape */
+      border-radius: 50%;     /* Makes it oval */
+    }
+    h3 {
+      position: absolute;
+      top: 500px;     /* Distance from the top */
+      left: 50px;     /* Distance from the left */
+      color: #F89880;
+      font-weight: normal;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <img src="Jo1.jpg" alt="Image" class="image">
+    <h3>ABRSM Practical Piano Grade 8<br>
+      ABRSM Music Theory Grade 8<br>
+      DipABRSM in Music Teaching and Education</h3>
+  </div>
+</body>
+
+</html>
